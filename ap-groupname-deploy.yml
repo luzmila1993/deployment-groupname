@@ -48,10 +48,10 @@ stages:
       runOnce:
         preDeploy:
           steps:
-          - template: https://github.com/luzmila1993/templates/ibm-gitops-pre-deploy.yml
+          - template: ibm-gitops-pre-deploy.yml@templates
             parameters:
               appOptions: ${{ parameters.appOptions }}
               appPolicies: ${{ parameters.appPolicies }}
         deploy:
           steps:
-          - template: https://github.com/luzmila1993/templates/ibm-gitops-deploy.yml
+          - template: ibm-gitops-deploy.yml@templates
