@@ -1,12 +1,12 @@
 resources:
   repositories:
     - repository: templates
-      endpoint: jossHD
+      endpoint: bitbucket-jossHD
       type: bitbucket
       name: jossHD/templates
       trigger: none
     - repository: policy-policyname
-      endpoint: jossHD
+      endpoint: bitbucket-jossHD
       type: bitbucket
       name: jossHD/policy-policyname
       trigger: none              
