@@ -1,13 +1,13 @@
 resources:
   repositories:
     - repository: templates
-      endpoint: bitbucket-jossHD
-      type: bitbucket
+      endpoint: github.com_jossHD
+      type: github
       name: jossHD/templates
       trigger: none
     - repository: policy-policyname
-      endpoint: bitbucket-jossHD
-      type: bitbucket
+      endpoint: github.com_jossHD
+      type: github
       name: jossHD/policy-policyname
       trigger: none              
 
@@ -15,7 +15,7 @@ trigger:
 - main
 
 pool:
-  name: <poolname>
+  name: PoC IBK Pool
 
 parameters:
 - name: appOptions
