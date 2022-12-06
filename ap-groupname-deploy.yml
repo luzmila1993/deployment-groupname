@@ -1,14 +1,14 @@
 resources:
   repositories:
     - repository: templates
-      endpoint: <endpoint>
+      endpoint: jossHD
       type: bitbucket
-      name: <organizacion>/<repositorio>
+      name: jossHD/templates
       trigger: none
-    - repository: <policyname>
-      endpoint: <endpoint>
+    - repository: policy-policyname
+      endpoint: jossHD
       type: bitbucket
-      name: <organizacion>/<repositorio>
+      name: jossHD/policy-policyname
       trigger: none              
 
 trigger:
@@ -22,15 +22,15 @@ parameters:
   displayName: Application options
   type: object
   default:
-    - name: <apiname>
-      secret: []
-    - name: <libname>
+    - name: 'api-apiname'
+      secret: ["setdbparms-wwvbm"]
+    - name: 'lib-libname'
       secret: []
 - name: appPolicies
   displayName: Application Policies options
   type: object
   default:
-    - <policyname>
+    - policy-policyname
     
 variables:
 - template: variables.yml
@@ -48,10 +48,10 @@ stages:
       runOnce:
         preDeploy:
           steps:
-          - template: ibm-gitops-pre-deploy.yml@templates
+          - template: https://github.com/jossHD/templates/ibm-gitops-pre-deploy.yml
             parameters:
               appOptions: ${{ parameters.appOptions }}
               appPolicies: ${{ parameters.appPolicies }}
         deploy:
           steps:
-          - template: ibm-gitops-deploy.yml@templates
+          - template: https://github.com/jossHD/templates/ibm-gitops-deploy.yml
