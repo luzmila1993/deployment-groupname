@@ -1,0 +1,8 @@
+variables:
+- group: gitops-cred-sb-001
+- group: gitops-app-sb-001
+- group: env-sb-001
+
+- group: cluster-env-dev-001
+- name: runNumber
+  value: '1.0.0-$(Build.BuildNumber)'

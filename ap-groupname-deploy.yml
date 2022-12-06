@@ -1,0 +1,57 @@
+resources:
+  repositories:
+    - repository: templates
+      endpoint: <endpoint>
+      type: bitbucket
+      name: <organizacion>/<repositorio>
+      trigger: none
+    - repository: <policyname>
+      endpoint: <endpoint>
+      type: bitbucket
+      name: <organizacion>/<repositorio>
+      trigger: none              
+
+trigger:
+- main
+
+pool:
+  name: <poolname>
+
+parameters:
+- name: appOptions
+  displayName: Application options
+  type: object
+  default:
+    - name: <apiname>
+      secret: []
+    - name: <libname>
+      secret: []
+- name: appPolicies
+  displayName: Application Policies options
+  type: object
+  default:
+    - <policyname>
+    
+variables:
+- template: variables.yml
+
+stages:
+- stage: DeployApplication
+  displayName: Deploy Application
+  jobs:
+  - deployment: DeployArgo
+    workspace:
+      clean: all
+    displayName: Deploy in ArgoCD
+    environment: $(environmentValue)
+    strategy:
+      runOnce:
+        preDeploy:
+          steps:
+          - template: ibm-gitops-pre-deploy.yml@templates
+            parameters:
+              appOptions: ${{ parameters.appOptions }}
+              appPolicies: ${{ parameters.appPolicies }}
+        deploy:
+          steps:
+          - template: ibm-gitops-deploy.yml@templates
