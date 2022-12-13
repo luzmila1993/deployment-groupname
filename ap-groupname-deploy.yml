@@ -1,12 +1,12 @@
 resources:
   repositories:
     - repository: templates
-      endpoint: github.com/luzmila1993
+      endpoint: github.com_luzmila1993
       type: github
       name: luzmila1993/templates
       trigger: none
     - repository: policy-policyname
-      endpoint: github.com/luzmila1993
+      endpoint: github.com_luzmila1993
       type: github
       name: luzmila1993/policy-policyname
       trigger: none              
