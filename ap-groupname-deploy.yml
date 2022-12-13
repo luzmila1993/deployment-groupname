@@ -23,7 +23,7 @@ parameters:
   type: object
   default:
     - name: 'api-apiname'
-      secret: ["setdbparms-wwvbm"]
+      secret: []
     - name: 'lib-libname'
       secret: []
 - name: appPolicies
